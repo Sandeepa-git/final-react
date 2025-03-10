@@ -1,3 +1,4 @@
+import Image from 'next/image'; // Import Image from next/image
 import darkSaasLandingPage from "@/assets/images/dark-saas-landing-page.png";
 import lightSaasLandingPage from "@/assets/images/light-saas-landing-page.png";
 import aiStartupLandingPage from "@/assets/images/ai-startup-landing-page.png";
@@ -130,9 +131,11 @@ export const ProjectsSection = () => {
                 {/* Project image */}
                 <div>
                   <div className="w-full aspect-auto mt-8 rounded-xl overflow-hidden">
-                    <img
+                    <Image
                       src={project.image}
                       alt={project.title}
+                      width={800}  // Set the appropriate width for your images
+                      height={600} // Set the appropriate height for your images
                       className="mt-8 -mb-4 md:mb-0 
                       lg:mt-0 lg:absolute lg:h-[100%] 
                       lg:w-auto lg:max-w-none lg:scale-y-110"

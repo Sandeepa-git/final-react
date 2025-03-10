@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react"; // Import useCallback
 import memojiAvatar1 from "@/assets/images/memoji-avatar-1.png";
 import memojiAvatar2 from "@/assets/images/memoji-avatar-2.png";
 import memojiAvatar3 from "@/assets/images/memoji-avatar-3.png";
@@ -49,7 +49,8 @@ export const TestimonialsSection = () => {
   const marqueeRef = useRef<HTMLDivElement>(null);
   const animationFrameRef = useRef<number | null>(null);
 
-  const startMarquee = () => {
+  // Use useCallback to prevent recreation of the startMarquee function on every render
+  const startMarquee = useCallback(() => {
     let position = scrollPosition;
 
     const animate = () => {
@@ -65,7 +66,7 @@ export const TestimonialsSection = () => {
     };
 
     animationFrameRef.current = requestAnimationFrame(animate);
-  };
+  }, [isHovered, scrollPosition]); // Add dependencies here
 
   const stopMarquee = () => {
     if (animationFrameRef.current) {
@@ -85,7 +86,7 @@ export const TestimonialsSection = () => {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [isHovered]);
+  }, [isHovered, startMarquee]); // Add startMarquee to dependencies
 
   return (
     <div className="py-16">

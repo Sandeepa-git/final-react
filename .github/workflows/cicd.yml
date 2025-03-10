@@ -33,7 +33,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           name: 'github-pages'
-          path: build  # Corrected 'bulid' to 'build'
+          path: .next  # Corrected 'bulid' to 'build'
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4  # Corrected 'V4' to 'v4'
